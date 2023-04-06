@@ -9,4 +9,7 @@ return require('packer').startup(function(use)
 
   -- Theme
   use {'nyoom-engineering/oxocarbon.nvim'}
+
+  -- Statistial language
+  use 'wakatime/vim-wakatime'
 end)
