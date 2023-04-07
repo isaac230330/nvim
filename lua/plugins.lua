@@ -12,4 +12,6 @@ return require('packer').startup(function(use)
 
   -- Statistial language
   use 'wakatime/vim-wakatime'
+
+  use 'neovim/nvim-lspconfig'
 end)
