@@ -4,9 +4,9 @@
 -- vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  -- 1.first
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
   -- Colorscheme
   use {'nyoom-engineering/oxocarbon.nvim'}
 
@@ -27,6 +27,23 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
+
+  -- Editor
+  -- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = require("packages.configs.trouble"),
+  }
+
+  -- useful
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- deps
+  use 'nvim-tree/nvim-web-devicons'
 
   -- others performance tools
   use 'wakatime/vim-wakatime'

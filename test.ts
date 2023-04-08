@@ -9,16 +9,20 @@ interface User {
 enum Fuck {
 	A,
 	B,
-	C
+	C,
+	D,
+	E,
+	F
 }
 
 class A {
+	public age: number = 'string';
 	constructor(public name: string) {
 		console.log(name)
 	}
 
 	static con() {
-		return 'con'
+		return 'con';
 	}
 }
 
@@ -26,3 +30,4 @@ const demo = new A('fuck')
 
 A.con()
 
+console.log(demo.age)
