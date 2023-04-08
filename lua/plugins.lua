@@ -10,8 +10,73 @@ return require('packer').startup(function(use)
   -- Colorscheme
   use {'nyoom-engineering/oxocarbon.nvim'}
 
-  -- LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  }
+
+  -- Editor
+  use {
+    'neovim/nvim-lspconfig',
+    config = require('modules.configs.lsp')
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = require('modules.configs.trouble'),
+  }
+
+  use {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+	  config = require("modules.configs.cmp"),
+    dependencies = {
+      {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = require("modules.configs.luasnip"),
+      },
+      { "onsails/lspkind.nvim" },
+      { "lukas-reineke/cmp-under-comparator" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "andersevenrud/cmp-tmux" },
+      { "hrsh7th/cmp-path" },
+      { "f3fora/cmp-spell" },
+      { "hrsh7th/cmp-buffer" },
+      { "kdheepak/cmp-latex-symbols" },
+      { "ray-x/cmp-treesitter" },
+      -- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
+      -- {
+      -- 	"jcdickinson/codeium.nvim",
+      -- 	dependencies = {
+      -- 		"nvim-lua/plenary.nvim",
+      -- 		"MunifTanjim/nui.nvim",
+      -- 	},
+      -- 	config = require("completion.codeium"),
+      -- },
+    },
+  }
+
+  use {
+    'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = require("modules.configs.copilot"),
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = require("modules.configs.copilot_cmp"),
+      },
+    },
+  }
 
   -- Bottom status bar
   use {
@@ -26,14 +91,6 @@ return require('packer').startup(function(use)
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end,
-  }
-
-  -- Editor
-  -- Lua
-  use {
-    "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
-    config = require("packages.configs.trouble"),
   }
 
   -- useful
