@@ -2,6 +2,17 @@ require('core.leader_map')
 require('core.clipboard')
 require('core.options')
 
+-- todo
+vim.keymap.set("n", "<leader>ps", "<cmd>PackerSync<cr>", 
+  {silent = true, noremap = true}
+)
+
+vim.keymap.set("n", "<leader>pu", "<cmd>PackerUpdate<cr>", 
+  {silent = true, noremap = true}
+)
+
+
+
 vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>", 
   {silent = true, noremap = true}
 )
