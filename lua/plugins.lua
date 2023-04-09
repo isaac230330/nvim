@@ -13,11 +13,16 @@ return require('packer').startup(function(use)
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',
     },
-    config = function()
-      require("nvim-tree").setup {}
-    end
+    cmd = {
+      "NvimTreeToggle",
+      "NvimTreeOpen",
+      "NvimTreeFindFile",
+      "NvimTreeFindFileToggle",
+      "NvimTreeRefresh",
+    },
+    config = require("modules.configs.nvim_tree"),
   }
 
   -- Editor
@@ -53,15 +58,6 @@ return require('packer').startup(function(use)
       { "hrsh7th/cmp-buffer" },
       { "kdheepak/cmp-latex-symbols" },
       { "ray-x/cmp-treesitter" },
-      -- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
-      -- {
-      -- 	"jcdickinson/codeium.nvim",
-      -- 	dependencies = {
-      -- 		"nvim-lua/plenary.nvim",
-      -- 		"MunifTanjim/nui.nvim",
-      -- 	},
-      -- 	config = require("completion.codeium"),
-      -- },
     },
   }
 
@@ -98,9 +94,6 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-
-  -- deps
-  use 'nvim-tree/nvim-web-devicons'
 
   -- others performance tools
   use 'wakatime/vim-wakatime'

@@ -12,8 +12,8 @@ interface IUser {
   gender: 'male' | 'female'
 }
 
-class User implement IUser {
+class User implements IUser {
   constructor(public name: string, public age: number, public gender) {}
 }
 
-const
+const a1 = 'string'
