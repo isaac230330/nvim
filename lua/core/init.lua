@@ -2,12 +2,18 @@ require('core.leader_map')
 require('core.clipboard')
 require('core.options')
 
+vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>", 
+  {silent = true, noremap = true}
+)
+
+
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
   {silent = true, noremap = true}
 )
 vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
   {silent = true, noremap = true}
 )
+
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -28,6 +34,8 @@ telescope.setup {
     },
   },
 }
+
+
 
 require'nvim-treesitter.configs'.setup {
   autotag = {
